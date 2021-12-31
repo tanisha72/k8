@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manageconversionfactor
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: manageconversionfactor
+  template:
+    metadata:
+      labels:
+        app: manageconversionfactor
+    spec:
+      containers:
+      - name: manageconversionfactor
+        image: tanisha71/managecurrencyconversionfactor
+ 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: manageconversionfactor
+spec:
+  type: LoadBalancer
+  selector:
+    app: manageconversionfactor
+  ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 32002

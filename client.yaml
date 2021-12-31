@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myclient
+spec:
+  selector:
+    matchLabels:
+      app: myclient
+  template:
+    metadata:
+      labels:
+        app: myclient
+    spec:
+      containers:
+      - name: myclient
+        image: nginx:stable-alpine
